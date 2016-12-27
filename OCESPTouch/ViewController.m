@@ -20,13 +20,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self._esptouchTask = [[ESPTouchTask alloc] initWithApSsid:@"WiFi"
-                                                   andApBssid:@""
-                                                     andApPwd:@"7788990011"
-                                               andIsSsidHiden:NO];
-    [self._esptouchTask setEsptouchDelegate:self];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
+        self._esptouchTask = [[ESPTouchTask alloc] initWithApSsid:@"WiFi"
+                                                       andApBssid:@""
+                                                         andApPwd:@"12312312"
+                                                   andIsSsidHiden:NO];
+        [self._esptouchTask setEsptouchDelegate:self];
+        
         ESPTouchResult *result = [self._esptouchTask executeForResult];
         NSLog(@"%@", result.description);
     });
